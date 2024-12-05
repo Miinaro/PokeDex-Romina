@@ -1,62 +1,73 @@
-# PokeDex - Romina
+# 🐾Pokédex - Romina
 
-Este proyecto es una aplicación básica de Pokédex desarrollada en Django, que consume la API pública [PokéAPI](https://pokeapi.co/). Permite a los usuarios explorar detalles de Pokémon, buscar por nombre o ID, y visualizar cadenas evolutivas.
+## ¡Bienvenido a Pokédex - Romina! 🎮
+Este proyecto es una aplicación web desarrollada en Django que utiliza la API pública PokéAPI. Con esta Pokédex, puedes:
 
-## Requisitos
+- Explorar información detallada de Pokémon.
+- Buscar por nombre o ID.
+- Visualizar cadenas evolutivas.
 
-Antes de empezar, asegúrate de tener instalado:
+## 🚀 Requisitos
 
+Antes de empezar, asegúrate de tener instalados los siguientes componentes:
 - Python 3.8+
 - pip (administrador de paquetes de Python)
-- Virtualenv 
+- Virtualenv
 
-## Instalación
+## 🔧 Instalación
 
-1. Clona este repositorio:
+   Clona este repositorio:
 
-   git clone https://github.com/Miinaro/PokeDex-Romina
+- git clone https://github.com/Miinaro/PokeDex-Romina
 
-O tambien se puede descargar el archivo en Code > Download Zip
+O descarga el proyecto desde Code > Download ZIP.
 
-2. Abrir CMD o Command Prompt (Win + R)
-   - Reridigirce a la carpeta donde se encuentre el proyecto
-        ...\PokeDex-Romina>
+Abre la terminal (CMD o Command Prompt) y dirígete a la carpeta del proyecto:
 
-3. Crear un Entorno virtual con el siguiente comando:
-     python -m venv venv
+- cd PokeDex-Romina
 
-4. Activar entorno virtual
-     venv\Scripts\activate
+Crea un entorno virtual:
 
-5. Instalar los requerimientos necesarios
-     python.exe -m pip install -r requeriments.txt
+- python -m venv venv
 
-6. Iniciar proyecto
-     python manage.py runserver
+Activa el entorno virtual:
 
-     Abre tu navegador y accede a: http://127.0.0.1:8000
+- venv\Scripts\activate
 
-## Decisiones de Diseño
+Instala las dependencias necesarias:
 
-El proyecto fue desarrollado utilizando Django, HTML y CSS debido a:
-    - Experiencia previa con estas tecnologías.
-    - Plazo limitado para completar la tarea.
-    - Mayor eficiencia trabajando con herramientas conocidas.
-    
-## Cosas ha mejorar
-Sugerencias de búsqueda:
-    Actualmente, si no se escribe el nombre completo de un Pokémon, se genera una lista de sugerencias con todos los nombres que incluyen la letra ingresada (por ejemplo, "k"). Optimizar esta funcionalidad sería ideal.
+- pip install -r requirements.txt
 
-Sprites faltantes:
-    Algunos sprites (especialmente los últimos Pokémon) no se cargan correctamente. Esto requiere una investigación adicional para resolver el problema.
+Inicia el servidor:
 
-Interfaz más dinámica:
-    Tomando la inspiracion de [Pokemon.Gameinfo](https://pokemon.gameinfo.io/es), sería excelente tener una lista completa de Pokémon en la página inicial. Al buscar, el Pokémon debería resaltarse dinámicamente, por razones de requerimientos se dejo la idea.
+- python manage.py runserver
 
-Animaciones en sprites:
+Luego abre tu navegador y accede a: http://127.0.0.1:8000
+
+## 🎨 Decisiones de Diseño
+
+Este proyecto fue desarrollado con:
+
+- Django para la lógica del backend.
+- HTML y CSS para la interfaz.
+
+# Razones de elección:
+
+- Experiencia previa con estas tecnologías.
+- Plazo limitado para completar el desarrollo.
+- Eficiencia al trabajar con herramientas conocidas.
+
+## ✨ Mejoras Futuras
+
+- Sugerencias de búsqueda: 
+   Actualmente, al buscar un Pokémon, se genera una lista con todos los nombres que incluyen las letras ingresadas (por ejemplo, "k"). Optimizar este sistema para mejorar la    experiencia del usuario sería ideal.
+
+- Sprites faltantes: 
+   Algunos sprites (especialmente los últimos Pokémon) no se cargan correctamente. Esto requiere una investigación adicional para resolver el problema.
+
+
+- Interfaz más dinámica: 
+    Tomando la inspiracion de [Pokemon.Gameinfo](https://pokemon.gameinfo.io/es), sería excelente tener una lista completa de Pokémon en la página inicial. Al buscar, el         Pokémon debería resaltarse dinámicamente, por razones de requerimientos se dejo la idea.
+
+- Animaciones en sprites: 
     Mejorar la estética del índice utilizando sprites animados como los que se ven en [Pokemon Concept](https://www.behance.net/gallery/113562309/Pokemon-Pokedex-Website-Redesign-Concept#)
-
-
-
-
-
