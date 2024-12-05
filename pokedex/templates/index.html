@@ -16,27 +16,28 @@
     <button class="Type filtro" onclick="location.href='/'">Quitar Filtro</button>
 </div>
 <!-- Filtros por tipo de Pokémon -->
-<div class="type-filter">
-    <button class="Type normal" onclick="location.href='?type=normal'">Normal</button>
-    <button class="Type fire" onclick="location.href='?type=fire'">Fire</button>
-    <button class="Type water" onclick="location.href='?type=water'">Water</button>
-    <button class="Type electric" onclick="location.href='?type=electric'">Electric</button>
-    <button class="Type fairy" onclick="location.href='?type=fairy'">Fairy</button>
-    <button class="Type grass" onclick="location.href='?type=grass'">Grass</button>
-    <button class="Type ice" onclick="location.href='?type=ice'">Ice</button>
-    <button class="Type fighting" onclick="location.href='?type=fighting'">Fighting</button>
-    <button class="Type poison" onclick="location.href='?type=poison'">Poison</button>
-    <button class="Type ground" onclick="location.href='?type=ground'">Ground</button>
-    <button class="Type flying" onclick="location.href='?type=flying'">Flying</button>
-    <button class="Type psychic" onclick="location.href='?type=psychic'">Psychic</button>
-    <button class="Type bug" onclick="location.href='?type=bug'">Bug</button>
-    <button class="Type rock" onclick="location.href='?type=rock'">Rock</button>
-    <button class="Type ghost" onclick="location.href='?type=ghost'">Ghost</button>
-    <button class="Type dragon" onclick="location.href='?type=dragon'">Dragon</button>
-    <button class="Type steel" onclick="location.href='?type=steel'">Steel</button>
-    <button class="Type dark" onclick="location.href='?type=dark'">Dark</button>
+<div class="type-filter-card" >
+    <div class="type-filter">
+        <button class="Type normal" onclick="location.href='?type=normal'">Normal</button>
+        <button class="Type fire" onclick="location.href='?type=fire'">Fire</button>
+        <button class="Type water" onclick="location.href='?type=water'">Water</button>
+        <button class="Type electric" onclick="location.href='?type=electric'">Electric</button>
+        <button class="Type fairy" onclick="location.href='?type=fairy'">Fairy</button>
+        <button class="Type grass" onclick="location.href='?type=grass'">Grass</button>
+        <button class="Type ice" onclick="location.href='?type=ice'">Ice</button>
+        <button class="Type fighting" onclick="location.href='?type=fighting'">Fighting</button>
+        <button class="Type poison" onclick="location.href='?type=poison'">Poison</button>
+        <button class="Type ground" onclick="location.href='?type=ground'">Ground</button>
+        <button class="Type flying" onclick="location.href='?type=flying'">Flying</button>
+        <button class="Type psychic" onclick="location.href='?type=psychic'">Psychic</button>
+        <button class="Type bug" onclick="location.href='?type=bug'">Bug</button>
+        <button class="Type rock" onclick="location.href='?type=rock'">Rock</button>
+        <button class="Type ghost" onclick="location.href='?type=ghost'">Ghost</button>
+        <button class="Type dragon" onclick="location.href='?type=dragon'">Dragon</button>
+        <button class="Type steel" onclick="location.href='?type=steel'">Steel</button>
+        <button class="Type dark" onclick="location.href='?type=dark'">Dark</button>
+    </div>
 </div>
-
 <!-- Mostrar resultados de búsqueda -->
 {% if pokemon_data %}
     <h2>Resultado de búsqueda</h2>
@@ -68,7 +69,7 @@
                         class="pokemon-sprite">
                     <h2 class="pokemon-name">{{ pokemon.name | capfirst }}</h2>
                     <div class="pokemon-info">
-                        
+                        <p>N°{{pokemon.id}}</p>
                         <ul class="TypeList">
                             {% for type in pokemon.types %}
                                 <li class="Type {{ type | lower }}">
