@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+    <title>Pokédex</title>
+
+    <style>
+        /* Estilo general de la lista */
+        .pokemon-list {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            justify-content: center;
+        }
+    
+        .pokemon-item {
+            flex: 1 1 calc(20% - 20px); /* Ajusta el tamaño de las tarjetas */
+            max-width: 200px;
+            text-align: center;
+        }
+    
+        .pokemon-card {
+            position: relative;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            padding: 20px 10px;
+            overflow: visible; /* Permitir que las imágenes sobresalgan */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+    
+        .pokemon-card:hover {
+            transform: scale(1.05);
+        }
+    
+        .pokemon-card img {
+            position: absolute;
+            top: -40px; /* Mueve la imagen hacia arriba */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px; /* Ajusta el tamaño de la imagen */
+            height: auto;
+            z-index: 1;
+        }
+    
+        .pokemon-card h2 {
+            margin-top: 40px; /* Espacio para la imagen sobresaliente */
+            font-size: 0.8rem;
+            color: #333;
+        }
+    
+        .pokemon-card p {
+            margin: 10px 0;
+            font-size: 1rem;
+            color: #666;
+        }
+    
+        .TypeList {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+    
+        .TypeList .Type {
+            background-color: #e0e0e0;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+    
+        .pokemon-card-link {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+
+
+</head>
+<h1>Bienvenido a la Pokédex</h1>
+<p>Busca tu Pokémon favorito</p>
+<form method="get" action="/search">
+    <input type="text" name="query" placeholder="Busca un Pokémon" value="{{ query }}">
+    <button type="submit">Buscar</button>
+</form>
+
+<!-- Mostrar resultados de búsqueda -->
+{% if pokemon_data %}
+    <h2>Resultado de búsqueda</h2>
+    <div class="pokemon-card">
+        <h2 class="pokemon-name">{{ pokemon_data.name | capfirst }}</h2>
+        <img src="{{ pokemon_data.sprites.front_default }}" alt="{{ pokemon_data.name }}" class="pokemon-sprite">
+        <div class="pokemon-info">
+            <p> N°{{ pokemon_data.id }}</p>
+            <ul class="TypeList">
+                {% for type in pokemon_data.types %}
+                    <li class="Type {{ type.type.name | lower }}">
+                        {{ type.type.name | capfirst }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endif %}
+
+<!-- Lista de Pokémon -->
+<ul class="pokemon-list">
+    {% for pokemon in pokemons %}
+        <li class="pokemon-item">
+            <a href="{% url 'pokemon_detail' pokemon.name %}" class="pokemon-card-link">
+                <div class="pokemon-card">
+                    <img 
+                        src="{{ pokemon.sprites.front_default }}" 
+                        alt="{{ pokemon.name }}" 
+                        class="pokemon-sprite">
+                    <h2 class="pokemon-name">{{ pokemon.name | capfirst }}</h2>
+                    <div class="pokemon-info">
+                        <p>N°{{ pokemon.id }}</p>
+                        <ul class="TypeList">
+                            {% for type in pokemon.types %}
+                                <li class="Type {{ type | lower }}">
+                                    {{ type | capfirst }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+
+<!-- Paginación -->
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; Primera</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+        {% endif %}
+
+        <span class="current">
+            Pág {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Última &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}

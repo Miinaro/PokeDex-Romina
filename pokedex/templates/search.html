@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+    <title>Resultado de Búsqueda - Pokédex</title>
+</head>
+
+<h1>Resultado de Búsqueda</h1>
+
+<!-- Formulario de búsqueda -->
+<form method="get" action="{% url 'search' %}">
+    <input type="text" name="query" placeholder="Busca un Pokémon" value="{{ query }}">
+    <button type="submit">Buscar</button>
+</form>
+
+<!-- Mostrar el Pokémon encontrado si es único -->
+{% if pokemon_data %}
+    <div class="pokemon-card-search">
+        <div>
+            <img src="{{ pokemon_data.sprites.front_default }}" class="pokemon-sprite-search">
+        </div>
+        <div class="pokemon-info-search">
+            <a href="{% url 'pokemon_detail' pokemon_data.name %}" class="pokemon-card-link">
+                <h2 class="pokemon-name-search">{{ pokemon_data.name | capfirst }}</h2>
+            </a>
+            <p> N°{{ pokemon_data.id }}</p>
+            <ul class="TypeList">
+                {% for type in pokemon_data.types %}
+                    <li class="Type {{ type.type.name | lower }}">
+                        {{ type.type.name | capfirst }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% elif not pokemon_suggestions %}
+    <p>No se encontraron resultados para "{{ query }}".</p>
+{% endif %}
+
+<!-- Mostrar sugerencias si no se encontró un Pokémon específico -->
+{% if not pokemon_data and pokemon_suggestions %}
+    <h2 class="suggestion">Pokémon Sugeridos</h2>
+    <div class="pokemon-suggestions">
+        {% for pokemon in pokemon_suggestions %}
+            <div class="pokemon-card">
+                <!-- Imagen del Pokémon sugerido -->
+                <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }}" class="pokemon-sprite">
+                <div class="pokemon-info">
+                    <h3 class="pokemon-name">{{ pokemon.name | capfirst }}</h3>
+                    <a href="{% url 'pokemon_detail' pokemon.name %}" class="pokemon-link">Ver detalles</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+
+<!-- Botón para volver a la Pokédex -->
+<form method="get" action="{% url 'pokemon_list' %}" class="centered-form">
+    <button class="secondary" type="submit">Volver a la Pokédex</button>
+</form>
+
+{% endblock %}

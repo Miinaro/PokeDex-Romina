@@ -1,0 +1,126 @@
+.pokemon-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.pokemon-item {
+    text-align: center;
+}
+
+.pokemon-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.pokemon-link {
+    text-decoration: none;
+    color: inherit;
+
+}
+
+.pokemon-link:hover {
+    text-decoration: none;
+    color: inherit;
+
+}
+
+
+.pokemon-card-link {
+    text-decoration: none;
+    color: inherit;
+
+}
+.pokemon-card-link:hover {
+    cursor: pointer;
+}
+
+.pokemon-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.pokemon-sprite {
+    width: 100px;
+    height: 100px;
+}
+
+.pokemon-name {
+    font-size: 0.8rem;
+    margin: 0.2rem 0;
+    color: #590808;
+}
+
+.pokemon-name:hover {
+    color: #a31010;
+}
+
+.pokemon-info {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Estilo para la tarjeta del Pokémon en la búsqueda */
+.pokemon-card-search {
+    display: flex;  /* Utiliza flexbox para alinear los elementos en línea */
+    align-items: center;  /* Alinea verticalmente los elementos */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin: 20px auto;
+}
+
+.pokemon-card-search:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.pokemon-name-search {
+    font-size: 3rem;
+    margin: 0.3rem 0;
+    color: #590808;
+}
+
+.pokemon-name-search:hover {
+    color: #a31010;
+}
+
+/* Estilo para la imagen del Pokémon en la búsqueda */
+.pokemon-sprite-search {
+    width: 150px; /* Ajusta el tamaño de la imagen */
+    height: auto;
+    margin-right: 20px; /* Espacio entre la imagen y la información */
+}
+
+/* Estilo para la información del Pokémon en la búsqueda */
+.pokemon-info-search {
+    max-width: 200px;
+    text-align: left; 
+}
+
+/* Si necesitas que la información ocupe el espacio restante */
+.pokemon-info-search {
+    flex-grow: 1;
+}
+
+.pokemon-card-detail {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    cursor: pointer;
+    
+}
