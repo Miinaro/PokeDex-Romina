@@ -3,86 +3,6 @@
 {% block content %}
 <head>
     <title>Pokédex</title>
-
-    <style>
-        /* Estilo general de la lista */
-        .pokemon-list {
-            margin-top: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            list-style: none;
-            padding: 0;
-            justify-content: center;
-        }
-    
-        .pokemon-item {
-            flex: 1 1 calc(20% - 20px); /* Ajusta el tamaño de las tarjetas */
-            max-width: 200px;
-            text-align: center;
-        }
-    
-        .pokemon-card {
-            position: relative;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background-color: #f9f9f9;
-            padding: 20px 10px;
-            overflow: visible; /* Permitir que las imágenes sobresalgan */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
-        }
-    
-        .pokemon-card:hover {
-            transform: scale(1.05);
-        }
-    
-        .pokemon-card img {
-            position: absolute;
-            top: -40px; /* Mueve la imagen hacia arriba */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px; /* Ajusta el tamaño de la imagen */
-            height: auto;
-            z-index: 1;
-        }
-    
-        .pokemon-card h2 {
-            margin-top: 40px; /* Espacio para la imagen sobresaliente */
-            font-size: 0.8rem;
-            color: #333;
-        }
-    
-        .pokemon-card p {
-            margin: 10px 0;
-            font-size: 1rem;
-            color: #666;
-        }
-    
-        .TypeList {
-            list-style: none;
-            padding: 0;
-            margin: 10px 0;
-            display: flex;
-            justify-content: center;
-            gap: 5px;
-        }
-    
-        .TypeList .Type {
-            background-color: #e0e0e0;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            color: #555;
-        }
-    
-        .pokemon-card-link {
-            text-decoration: none;
-            color: inherit;
-        }
-    </style>
-
-
 </head>
 <h1>Bienvenido a la Pokédex</h1>
 <p>Busca tu Pokémon favorito</p>
@@ -90,6 +10,32 @@
     <input type="text" name="query" placeholder="Busca un Pokémon" value="{{ query }}">
     <button type="submit">Buscar</button>
 </form>
+
+<div>
+    <p>Filtra por su tipo</p>
+    <button class="Type filtro" onclick="location.href='/'">Quitar Filtro</button>
+</div>
+<!-- Filtros por tipo de Pokémon -->
+<div class="type-filter">
+    <button class="Type normal" onclick="location.href='?type=normal'">Normal</button>
+    <button class="Type fire" onclick="location.href='?type=fire'">Fire</button>
+    <button class="Type water" onclick="location.href='?type=water'">Water</button>
+    <button class="Type electric" onclick="location.href='?type=electric'">Electric</button>
+    <button class="Type fairy" onclick="location.href='?type=fairy'">Fairy</button>
+    <button class="Type grass" onclick="location.href='?type=grass'">Grass</button>
+    <button class="Type ice" onclick="location.href='?type=ice'">Ice</button>
+    <button class="Type fighting" onclick="location.href='?type=fighting'">Fighting</button>
+    <button class="Type poison" onclick="location.href='?type=poison'">Poison</button>
+    <button class="Type ground" onclick="location.href='?type=ground'">Ground</button>
+    <button class="Type flying" onclick="location.href='?type=flying'">Flying</button>
+    <button class="Type psychic" onclick="location.href='?type=psychic'">Psychic</button>
+    <button class="Type bug" onclick="location.href='?type=bug'">Bug</button>
+    <button class="Type rock" onclick="location.href='?type=rock'">Rock</button>
+    <button class="Type ghost" onclick="location.href='?type=ghost'">Ghost</button>
+    <button class="Type dragon" onclick="location.href='?type=dragon'">Dragon</button>
+    <button class="Type steel" onclick="location.href='?type=steel'">Steel</button>
+    <button class="Type dark" onclick="location.href='?type=dark'">Dark</button>
+</div>
 
 <!-- Mostrar resultados de búsqueda -->
 {% if pokemon_data %}
@@ -122,7 +68,7 @@
                         class="pokemon-sprite">
                     <h2 class="pokemon-name">{{ pokemon.name | capfirst }}</h2>
                     <div class="pokemon-info">
-                        <p>N°{{ pokemon.id }}</p>
+                        
                         <ul class="TypeList">
                             {% for type in pokemon.types %}
                                 <li class="Type {{ type | lower }}">

@@ -1,37 +1,99 @@
+
+/* Estilo general de la lista */
 .pokemon-list {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     list-style: none;
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 1rem;
+    justify-content: center;
 }
 
 .pokemon-item {
+    flex: 1 1 calc(20% - 20px); /* Ajusta el tamaño de las tarjetas */
+    max-width: 200px;
     text-align: center;
 }
 
 .pokemon-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    padding: 20px 10px;
+    overflow: visible; /* Permitir que las imágenes sobresalgan */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.pokemon-card:hover {
+    transform: scale(1.05);
+}
+
+.pokemon-card img {
+    position: absolute;
+    top: -40px; /* Mueve la imagen hacia arriba */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px; /* Ajusta el tamaño de la imagen */
+    height: auto;
+    z-index: 1;
+}
+
+.pokemon-card h2 {
+    margin-top: 40px; /* Espacio para la imagen sobresaliente */
+    font-size: 0.8rem;
+    color: #333;
+}
+
+.pokemon-card p {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #666;
+}
+
+.TypeList {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.TypeList .Type {
+    background-color: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Estilo de los filtros por tipo */
+.type-filter {
+    display: contents;
+    margin-bottom: 35px;
+    margin-top: 10px;
+}
+
+.type-filter button {
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-size: 1rem;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: background-color 0.3s;
+    margin-bottom: 2px;
 }
 
-.pokemon-link {
+.type-filter button:hover {
+    background-color: #d4d4d4;
+}
+
+.pokemon-card-link {
     text-decoration: none;
     color: inherit;
-
 }
-
-.pokemon-link:hover {
-    text-decoration: none;
-    color: inherit;
-
-}
-
 
 .pokemon-card-link {
     text-decoration: none;
@@ -42,10 +104,6 @@
     cursor: pointer;
 }
 
-.pokemon-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
 
 
 .pokemon-sprite {
@@ -123,4 +181,25 @@
     background-color: #ffffff;
     cursor: pointer;
     
+}
+
+.TypeList {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.TypeList .Type {
+    background-color: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+a:hover {
+    color: #a3a9b3;
 }

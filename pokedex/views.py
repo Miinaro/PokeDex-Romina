@@ -13,18 +13,34 @@ async def fetch_all_pokemon_details(pokemons):
         tasks = [fetch_pokemon_details(session, pokemon['url']) for pokemon in pokemons]
         return await asyncio.gather(*tasks)
 
-
 def pokemon_list(request):
+    # URL base de la API de Pokémon
     url = "https://pokeapi.co/api/v2/pokemon?limit=10277&offset=0"
-    response = requests.get(url)
-    pokemon_data = response.json()
-    pokemons = pokemon_data['results']
+    
+    # Obtener el tipo de Pokémon filtrado desde la URL (si está presente)
+    type_filter = request.GET.get('type', None)
 
-    # Obtenemos el número de página de la URL (por defecto es 1)
+    # Si hay un filtro por tipo, agregarlo a la URL de la API
+    if type_filter:
+        url = f"https://pokeapi.co/api/v2/type/{type_filter}"
+    
+    # Realizar la solicitud a la API
+    response = requests.get(url)
+    
+    # Si no se filtra por tipo, obtenemos la lista completa de Pokémon
+    if type_filter:
+        pokemon_data = response.json()
+        pokemons = pokemon_data['pokemon']
+        pokemons = [pokemon['pokemon'] for pokemon in pokemons]  # Filtrar solo el objeto Pokémon
+    else:
+        pokemon_data = response.json()
+        pokemons = pokemon_data['results']
+
+    # Obtener el número de página de la URL (por defecto es 1)
     page_number = request.GET.get('page', 1)
     
-    # Creamos el paginador
-    paginator = Paginator(pokemons, 14)  # Mostramos 14 pokemons por página
+    # Crear el paginador
+    paginator = Paginator(pokemons, 14)  # Mostramos 14 Pokémon por página
     page_obj = paginator.get_page(page_number)
     
     # Obtener los detalles de los Pokémon para la página actual
@@ -32,6 +48,7 @@ def pokemon_list(request):
     asyncio.set_event_loop(loop)
     detailed_pokemons_data = loop.run_until_complete(fetch_all_pokemon_details(page_obj.object_list))
     
+    # Estructurar los detalles de los Pokémon para mostrar en la plantilla
     detailed_pokemons = [{
         'id': pokemon_details['id'],
         'name': pokemon_details['name'],
@@ -39,8 +56,7 @@ def pokemon_list(request):
         'types': [type['type']['name'] for type in pokemon_details['types']]
     } for pokemon_details in detailed_pokemons_data]
 
-    return render(request, 'index.html', {'pokemons': detailed_pokemons, 'page_obj': page_obj})
-
+    return render(request, 'index.html', {'pokemons': detailed_pokemons, 'page_obj': page_obj, 'type_filter': type_filter})
 
 def search(request):
     if request.method == 'GET':
