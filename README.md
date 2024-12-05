@@ -19,7 +19,7 @@ Antes de empezar, asegúrate de tener instalado:
 O tambien se puede descargar el archivo en Code > Download Zip
 
 2. Abrir CMD o Command Prompt (Win + R)
-     2.a Reridigirce a la carpeta donde se encuentre el proyecto
+   - Reridigirce a la carpeta donde se encuentre el proyecto
         ...\PokeDex-Romina>
 
 3. Crear un Entorno virtual con el siguiente comando:
