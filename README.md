@@ -51,7 +51,7 @@ Este proyecto fue desarrollado con:
 - Django para la lógica del backend.
 - HTML y CSS para la interfaz.
 
-# Razones de elección:
+*Razones de elección:*
 
 - Experiencia previa con estas tecnologías.
 - Plazo limitado para completar el desarrollo.
