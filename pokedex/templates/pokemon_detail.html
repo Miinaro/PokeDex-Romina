@@ -7,7 +7,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ pokemon_data.name | capfirst }} - Detalles</title>
-
 </head>
 <body class="glass {{ pokemon_data.types.0.type.name | lower }}">
     <div class="pokemon-detail-container glass {{ pokemon_data.types.0.type.name | lower }}">
@@ -16,6 +15,7 @@
             <h1>{{ pokemon_data.name | capfirst }} N°{{ pokemon_data.id }}</h1>
         </div>
         <div class="pokemon-detail-info">
+            <!-- Sección Tipos -->
             <div class="info-section-detail glass {{ pokemon_data.types.0.type.name | lower }}">
                 <h2>Tipos</h2>
                 <ul class="TypeList">
@@ -26,6 +26,8 @@
                     {% endfor %}
                 </ul>
             </div>
+            
+            <!-- Sección Estadísticas -->
             <div class="info-section-detail glass {{ pokemon_data.types.0.type.name | lower }}">
                 <h2>Estadísticas Base</h2>
                 <ul>
@@ -34,6 +36,8 @@
                     {% endfor %}
                 </ul>
             </div>
+            
+            <!-- Sección Habilidades -->
             <div class="info-section-detail glass {{ pokemon_data.types.0.type.name | lower }}">
                 <h2>Habilidades</h2>
                 <ul>
@@ -42,6 +46,8 @@
                     {% endfor %}
                 </ul>
             </div>
+            
+            <!-- Sección Movimientos -->
             <div class="info-section-detail glass {{ pokemon_data.types.0.type.name | lower }}">
                 <h2>Movimientos</h2>
                 <ul>
@@ -49,7 +55,6 @@
                         <li>{{ move.move.name | capfirst }}</li>
                     {% endfor %}
                 </ul>
-            
                 <div class="pagination">
                     <span class="step-links">
                         {% if page_obj.has_previous %}
@@ -66,35 +71,28 @@
                     </span>
                 </div>
             </div>
-            
-            
-        </div>
-        <div class="evolution-section glass {{ pokemon_data.types.0.type.name | lower }}">
-            <h2>Evoluciones</h2>
-            {% if evolution_details %}
+            <!-- Sección Evoluciones -->
+            {% if evolution_details and evolution_details|length > 1 %}
+            <div class="evolution-section glass {{ pokemon_data.types.0.type.name | lower }}">
+                <h2>Evoluciones</h2>
                 <ul class="evolution-list">
                     {% for evolution in evolution_details %}
                         <li class="evolution-item">
                             <img src="{{ evolution.sprite }}" alt="{{ evolution.name }}">
                             <p>{{ evolution.name | capfirst }}</p>
                         </li>
-                        {% endfor %}
-                    </ul>
-                    {% else %}
-                    <p>No tiene evoluciones.</p>
-                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            {% else %}
+            <p></p>
+            {% endif %}
+
+            
         </div>
+        
         <a href="/" class="back-button-detail">Volver</a>
     </div>
 </body>
-
 </html>
 {% endblock %}
-<script>
-    document.querySelectorAll('.expand-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const info = this.nextElementSibling;
-            info.style.display = info.style.display === 'none' ? 'block' : 'none';
-        });
-    });
-</script>

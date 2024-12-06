@@ -155,5 +155,6 @@ def pokemon_detail(request, name):
         'pokemon_data': pokemon_data,
         'evolution_details': evolution_details,
         'page_obj': page_obj  # Pasar los movimientos paginados al template
+        
     }
     return render(request, 'pokemon_detail.html', context)
