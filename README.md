@@ -36,7 +36,7 @@ Activa el entorno virtual:
 
 Instala las dependencias necesarias:
 
-- pip install -r requirements.txt
+- python.exe -m pip install -r requeriments.txt
 
 Inicia el servidor:
 
