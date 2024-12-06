@@ -42,6 +42,32 @@
                     {% endfor %}
                 </ul>
             </div>
+            <div class="info-section-detail glass {{ pokemon_data.types.0.type.name | lower }}">
+                <h2>Movimientos</h2>
+                <ul>
+                    {% for move in page_obj %}
+                        <li>{{ move.move.name | capfirst }}</li>
+                    {% endfor %}
+                </ul>
+            
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1">&laquo; first</a>
+                            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                        {% endif %}
+                        <span class="current">
+                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        </span>
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">next</a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+            
+            
         </div>
         <div class="evolution-section glass {{ pokemon_data.types.0.type.name | lower }}">
             <h2>Evoluciones</h2>
@@ -52,11 +78,11 @@
                             <img src="{{ evolution.sprite }}" alt="{{ evolution.name }}">
                             <p>{{ evolution.name | capfirst }}</p>
                         </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>No tiene evoluciones.</p>
-            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p>No tiene evoluciones.</p>
+                    {% endif %}
         </div>
         <a href="/" class="back-button-detail">Volver</a>
     </div>
@@ -64,3 +90,11 @@
 
 </html>
 {% endblock %}
+<script>
+    document.querySelectorAll('.expand-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const info = this.nextElementSibling;
+            info.style.display = info.style.display === 'none' ? 'block' : 'none';
+        });
+    });
+</script>

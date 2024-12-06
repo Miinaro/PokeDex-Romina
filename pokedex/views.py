@@ -105,7 +105,6 @@ def search(request):
                 'pokemon_suggestions': pokemon_suggestions
             }
         )
-
 # Detalle de un Pokémon
 def pokemon_detail(request, name):
     # Obtener datos básicos del Pokémon
@@ -145,9 +144,16 @@ def pokemon_detail(request, name):
                     })
                 current_evolution = current_evolution['evolves_to'][0] if current_evolution['evolves_to'] else None
 
+    # Paginación para los movimientos
+    moves = pokemon_data.get('moves', [])
+    paginator = Paginator(moves, 10)  # Muestra 10 movimientos por página
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     # Pasar los datos al template
     context = {
         'pokemon_data': pokemon_data,
-        'evolution_details': evolution_details
+        'evolution_details': evolution_details,
+        'page_obj': page_obj  # Pasar los movimientos paginados al template
     }
     return render(request, 'pokemon_detail.html', context)
