@@ -66,8 +66,8 @@ Este proyecto fue desarrollado con:
    Algunos sprites (especialmente los últimos Pokémon) no se cargan correctamente. Esto requiere una investigación adicional para resolver el problema.
 
 
-- Interfaz más dinámica: 
-    Tomando la inspiracion de [Pokemon.Gameinfo](https://pokemon.gameinfo.io/es), sería excelente tener una lista completa de Pokémon en la página inicial. Al buscar, el         Pokémon debería resaltarse dinámicamente, por razones de requerimientos se dejo la idea.
+- Interfaz más dinámica:
+   Tomando la inspiracion de [Pokemon.Gameinfo](https://pokemon.gameinfo.io/es), sería excelente tener una lista completa de Pokémon en la página inicial. Al buscar, el         Pokémon debería resaltarse dinámicamente, por razones de requerimientos se dejo la idea, Agregando mejorar la interfaz en el detalle del pokemon, tanto en los movimientos    como en las evoluciones.
 
 - Animaciones en sprites: 
     Mejorar la estética del índice utilizando sprites animados como los que se ven en [Pokemon Concept](https://www.behance.net/gallery/113562309/Pokemon-Pokedex-Website-Redesign-Concept#)
