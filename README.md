@@ -10,9 +10,9 @@ Este proyecto es una aplicación web desarrollada en Django que utiliza la API p
 ## 🚀 Requisitos
 
 Antes de empezar, asegúrate de tener instalados los siguientes componentes:
-- Python 3.8+
+- Python 3.8+ (Seleccionar PATH en la instalación)
 - pip (administrador de paquetes de Python)
-- Virtualenv
+- Virtualenv ( Realizar pip install virtualenv luego de instalar Python)
 
 ## 🔧 Instalación
 
